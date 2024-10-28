@@ -13,9 +13,11 @@ This Todo app allows users to create, manage, and organize their tasks efficient
  - Board and list views
  - Light and Dark theme!
 
+
 ## Tech Stack
 
 React, SCSS, firebase
+
 
 ### Setup .env file
 ```bash
@@ -37,6 +39,7 @@ PORT=5000
 NODE_ENV=development
 ```
 
+
 ## Project Installation 
 ### Run this project locally
 #### Open terminal and write this commands:
@@ -47,13 +50,16 @@ NODE_ENV=development
 ```bash
   npm start
 ```
+
 ####Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload when you make changes. You may also see any lint errors in the console.
 
-### `npm run build`
+
+```bash
+  npm run build
+```
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
