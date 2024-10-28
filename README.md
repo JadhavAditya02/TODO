@@ -21,22 +21,15 @@ React, SCSS, firebase
 
 ### Setup .env file
 ```bash
-MONGO_URI=your_mongo_uri
 
-ACCESS_TOKEN_SECRET=your_access_token_secret
-REFRESH_TOKEN_SECRET=your_refresh_token_secret
+REACT_APP_API_KEY = your firebase api key
+REACT_APP_AUTH_DOMAIN = your firebase api domain
+REACT_APP_DATABASE_URL = your firebase database url
+REACT_APP_PROJECT_ID = your firebase project ID
+REACT_APP_STORAGE_BUCKET = your firebase storage
+REACT_APP_MESSAGING_SENDER_ID = your firebase sender ID
+REACT_APP_APP_ID = your firebase app ID
 
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
-
-STRIPE_SECRET_KEY=your_stripe_secret_key
-
-UPSTASH_REDIS_URL=your_redis_url
-
-CLIENT_URL=http://localhost:5173
-PORT=5000
-NODE_ENV=development
 ```
 
 
