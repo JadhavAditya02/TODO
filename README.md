@@ -1,10 +1,9 @@
 
-## Todoish (Todoist clone)
+## Todo
 
+This Todo app allows users to create, manage, and organize their tasks efficiently. Built with React, it features a clean and intuitive interface where users can add new tasks and delete tasks as needed. With easy navigation and real-time updates, managing your daily to-dos has never been simpler!
 ![App Screenshot](https://i.ibb.co/TrqT4bx/image.png)
 
-Todoish is the most advanced clone of Todoist on the internet! 
-This project captures many of the features users of Todoist love and appreciate
 ## Features
 
  - Task groups (Projects)
@@ -17,15 +16,12 @@ This project captures many of the features users of Todoist love and appreciate
 
 ## Run this project locally
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-After cloning, run:
+After Downloading, run:
 
 ### `npm install`
 
 
-In the project directory, you can run:
+In the terminal, you can run:
 
 ### `npm start`
 
