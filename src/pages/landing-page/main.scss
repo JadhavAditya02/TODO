@@ -1,0 +1,279 @@
+@font-face {
+  font-family: "Graphik";
+  src: url("../../assets/fonts/Graphik-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Graphik-semibold";
+  src: url("../../assets/fonts/Graphik-Semibold.woff2") format("woff2");
+}
+
+@import "scss/mixins.scss";
+
+html, body {
+  height: 100%; // Full height for body and html
+  margin: 0; // Remove default margin
+}
+
+
+.landing-page {
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  color: #fff;
+  font-family: "Graphik", sans-serif;
+  width: 100%;
+  position: relative;
+  min-height: 100vh; // Minimum height of 100% of the viewport
+
+  .intro__header {
+    width: 100%;
+    height: 4rem;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    background-color: #1d4ee1;
+    z-index: 4;
+
+  }
+
+  .intro__nav--link {
+    border-radius: 8px;
+  }
+
+  .intro__nav {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    align-items: center;
+    flex: 1 1;
+    min-height: 3rem;
+    margin: 0 auto;
+    max-width: 1088px;
+    padding: 0 1rem;
+    @include respond(tab-land) {
+    }
+    &--group {
+      display: flex;
+      align-items: center;
+
+      &__wrapper {
+        align-items: center;
+        display: flex;
+        &:nth-child(2) {
+          @include respond(tab-land) {
+            display: none;
+          }
+        }
+      }
+    }
+    &--item {
+      height: 3rem;
+      display: flex;
+      place-items: center;
+      cursor: pointer;
+      padding: 0 1rem;
+      font-size: 1rem;
+
+      a {
+        height: -webkit-fill-available;
+      }
+
+    }
+    &--link:hover {
+      color: #1f1f1f;
+      border-bottom: #e44232 1px solid;
+      background-color: #fafafa;
+    }
+
+    &--cta {
+      color: #fff;
+      background-color: #e44232;
+      font-size: 1rem;
+      line-height: 1.5;
+      letter-spacing: 0;
+      font-family: "Graphik-semibold";
+      padding: 0 1rem;
+      min-height: 2.5rem;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  
+
+  .nav-logo {
+    margin-right: 1rem;
+    .logo__desktop {
+      @include respond(phone) {
+        display: none;
+      }
+    }
+  }
+}
+.logo__mobile {
+  display: none;
+  @include respond(phone) {
+    display: block;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+
+// LandingPage.scss
+
+.container {
+  max-width: 1200px; // You can adjust the width
+  margin: 0 auto;
+  padding: 0 15px; // Responsive padding
+}
+
+.home-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; // Center content vertically
+  align-items: center; // Center content horizontally
+  padding: 40px 0; // Add padding as needed
+}
+
+.column11 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: stretch; // Stretch children to fill the height
+  justify-content: space-between; // Space out columns
+  min-height: 500px; // Set minimum height for the columns (adjust as needed)
+}
+
+.column2 {
+  flex: 1; // Allow this column to take available space
+  max-width: 600px; // Set a max width for the column
+  color: #575757;
+  padding: 20px; // Inner padding for better spacing
+  display: flex; // Use flexbox to allow inner items to align correctly
+  flex-direction: column; // Stack inner elements vertically
+  justify-content: center; // Center items vertically within this column
+  min-height: 100%; // Ensure it takes the full height of column11
+}
+
+.title {
+  font-size: 2.5rem; // Adjust font size
+  font-weight: bold; // Make the title bold
+  margin-bottom: 20px; // Space below the title
+}
+
+.tech-list {
+  display: flex; // Use flexbox for horizontal alignment
+  margin: 20px 0; // Vertical spacing
+  padding: 0; // Remove default padding
+  list-style-type: none; // Remove bullet points
+}
+
+.list-group-item {
+  margin-right: 10px; // Space between badges
+}
+
+.badge {
+  background-color: #102e88; // Example background color
+  color: white; // Text color for badges
+  padding: 10px 15px; // Padding for badges
+  border-radius: 3px; // Rounded corners
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.feature {
+  margin: 20px 0; // Margin around feature section
+}
+
+.feature-list {
+  padding: 0; // Remove default padding
+  list-style-type: none; // Remove bullet points
+  font-size:19px;
+}
+
+.feature-list li {
+  margin-bottom: 10px; // Space between feature items
+}
+
+.btn {
+  background-color: #28a745; // Green button color
+  color: white; // Text color
+  padding: 15px 8px; // Padding for button
+  border: none; // Remove border
+  border-radius: 5px; // Rounded corners
+  cursor: pointer; // Change cursor on hover
+  transition: background-color 0.3s; // Smooth transition for hover effec
+  margin-right: 25.5rem;
+  font-size: 16px;
+
+  &:hover {
+    background-color: #218838; // Darker shade on hover
+  }
+}
+
+.notes-img {
+  flex: 1; // Allow this column to take available space
+  max-width: 600px; // Set a max width for the column
+  display: flex;
+  justify-content: center; // Center image horizontally
+  align-items: center; // Center image vertically
+  min-height: 100%; // Ensure it takes the full height of column11
+  transform: scaleX(-1);
+}
+
+.landing-illustration {
+  max-width: 127%; // Responsive image
+  height: auto; // Maintain aspect ratio
+  margin-top: 48px;
+}
+
+
+
+.footer-section {
+  max-width: 1200px; // Set a max width for the footer container
+  margin: 0 auto; // Center the container
+  padding: 0 15px; // Padding for responsiveness
+  width: 100%; // Ensure footer spans full width
+  background-color: #fff; // Light background color for the footer
+}
+
+footer {
+  display: flex; // Flex container for footer
+  justify-content: space-between; // Space items evenly
+  align-items: center; // Align items vertically
+  padding: 1.5rem 0; // Vertical padding
+}
+
+.left {
+  color: #6c757d; // Muted text color for the left side
+  margin-bottom: 0; // Remove bottom margin
+  font-size: 1.5rem;
+  margin-left: 14px;
+
+}
+
+.nav {
+  display: flex; // Flex container for navigation
+  list-style: none; // Remove bullet points
+  padding-left: 0; // Remove left padding
+}
+
+.nav-item {
+  margin-left: 1rem; // Space between nav items
+}
+
+.right {
+  text-decoration: none; // Remove underline from links
+  color: #6c757d; // Link color
+  padding: 0.5rem; // Padding for link
+  transition: color 0.3s; // Transition for hover effect
+  font-size: 1.5rem;
+  margin-right: -8px;
+
+
+  &:hover {
+    color: #343a40; // Darker color on hover
+  }
+}
