@@ -43,9 +43,10 @@ REACT_APP_APP_ID = your firebase app ID
 ```bash
   npm start
 ```
-#### Runs the app in the development mode.\
+Runs the app in the development mode
 
-To view it in your browser.
+
+#### To view it in your browser.
 ```bash
   http://localhost:3000
 ```
@@ -53,7 +54,7 @@ The page will reload when you make changes. You may also see any lint errors in 
 
 
 
-### Builds the app for production to the `build` folder.\
+### Builds the app for production to the `build` folder .\
 ```bash
   npm run build
 ```
