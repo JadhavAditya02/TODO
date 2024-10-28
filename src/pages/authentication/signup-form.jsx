@@ -20,7 +20,7 @@ export const SignupForm = () => {
   const [nameHasError, setNameHasError] = useState(false);
   const [passwordHasError, setPasswordHasError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [globalErrorMessage, setGlobalErrorMessage] = useState("");
+  const [ setGlobalErrorMessage] = useState("");
 
   const { signupWithEmail } = useAuth();
 

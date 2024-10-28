@@ -6,7 +6,7 @@ export const Avatar = () => {
   const { currentUser } = useAuth();
   const userDisplayName = currentUser?.displayName?.replace(" ", "+");
 
-  const { showDialog, setShowDialog, setDialogProps } = useOverlayContextValue();
+  const {  setShowDialog, setDialogProps } = useOverlayContextValue();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const userOptionsTrigger = (event, elementPosition) => {
