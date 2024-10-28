@@ -14,8 +14,8 @@ export const BoardColumn = ({ column, tasks }) => {
           <div className="tasklist" ref={provided.innerRef} {...provided.droppableProps}>
             {tasks.map((task, index) => (
               <>
-                {taskEditorToShow != task.taskId && <BoardTask key={task.taskId} task={task} index={index} column={column} />}
-                {taskEditorToShow == task.taskId && <TaskEditor taskId={task.taskId} task={task} projects={projects} isEdit />}
+                {taskEditorToShow !== task.taskId && <BoardTask key={task.taskId} task={task} index={index} column={column} />}
+                {taskEditorToShow === task.taskId && <TaskEditor taskId={task.taskId} task={task} projects={projects} isEdit />}
               </>
             ))}
             {provided.placeholder}
