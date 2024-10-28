@@ -16,26 +16,28 @@ export const SignupForm = () => {
   const [loading, setLoading] = useState(false);
   const [formState, setFormState] = useState({ email: "", password: "", name: "" });
   const [emailIsValid, setEmailIsValid] = useState(true);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState();
   const [nameHasError, setNameHasError] = useState(false);
   const [passwordHasError, setPasswordHasError] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
-  const [ setGlobalErrorMessage] = useState("");
+
+  const [globalErrorMessage, setGlobalErrorMessage] = useState("");
 
   const { signupWithEmail } = useAuth();
 
   const onChangeHandler = (event) => {
     event.preventDefault();
     setEmailIsValid(true);
-    if (event.target.name === "password") {
+    if (event.target.name == "password") {
       setPasswordHasError(false);
     } else {
       setNameHasError(false);
     }
-    setFormState((prevState) => ({
-      ...prevState,
-      [event.target.name]: event.target.value,
-    }));
+    const value = event.target.value;
+    setFormState({
+      ...formState,
+      [event.target.name]: value,
+    });
   };
 
   const verifyEmail = async (event) => {
@@ -47,29 +49,32 @@ export const SignupForm = () => {
       const userRef = query(collection(db, "user"), where("email", "==", formState.email));
       const userSnap = await getDocs(userRef);
       if (userSnap.metadata.fromCache) {
-        handleError("Temporary error, try again later");
-      } else if (!userSnap.empty) {
-        handleError("Your email is already registered with us");
+        setEmailIsValid(false);
+        setLoading(false);
+        setErrorMessage("Temporary error, try again later");
+        setGlobalErrorMessage("Temporary error, try again later");
+        return;
+      }
+      if (!userSnap.empty) {
+        setEmailIsValid(false);
+        setErrorMessage("Your email is already registered with us");
+        setGlobalErrorMessage("Your email is already registered with us");
+        setLoading(false);
       } else {
         setLoading(false);
         setInStepOne(false);
         setInStepTwo(true);
       }
     } else {
-      handleError("Your email isn't valid");
+      setEmailIsValid(false);
+      setErrorMessage("Your email isn't valid");
+      setGlobalErrorMessage("Your email isn't valid");
     }
-  };
-
-  const handleError = (message) => {
-    setEmailIsValid(false);
-    setErrorMessage(message);
-    setGlobalErrorMessage(message);
-    setLoading(false);
   };
 
   const signUpWithEmailAddress = async (event) => {
     event.preventDefault();
-    await verifyEmail(event);
+    verifyEmail();
 
     if (!formState.name.length) {
       setNameHasError(true);
@@ -93,12 +98,15 @@ export const SignupForm = () => {
       <div className="signup__wrapper">
         <div className="step_one">
           <LoginSignupForm />
+
           <div className="separator">
             <div className="middle_separator">OR</div>
           </div>
           <form className="signup-form">
             <div className="field">
-              <label htmlFor="email" className="label">Email</label>
+              <label htmlFor="email" className="label">
+                Email
+              </label>
               {!emailIsValid && (
                 <div className="error-message">
                   <FeatherIcons
@@ -120,15 +128,11 @@ export const SignupForm = () => {
                 id="email"
                 autoComplete="off"
                 className={!emailIsValid ? "has-error" : ""}
-                onChange={onChangeHandler}
+                onChange={(event) => onChangeHandler(event)}
               />
             </div>
 
-            <button 
-              className="auth-button submit-button" 
-              disabled={loading} 
-              onClick={verifyEmail}
-            >
+            <button className="auth-button submit-button" disabled={loading ? true : false} onClick={(event) => verifyEmail(event)}>
               Sign up with Email
               {loading && <Spinner light />}
             </button>
@@ -142,7 +146,7 @@ export const SignupForm = () => {
         </div>
 
         <div className="step_two">
-          <a className="backlink" onClick={backlinkHandler}>
+          <a className="backlink" onClick={(event) => backlinkHandler(event)}>
             <svg className="" width="16" height="16" stroke="#000" fill="none">
               <use href={`${featherIcon}#chevron-left`}></use>
             </svg>
@@ -151,7 +155,9 @@ export const SignupForm = () => {
           <h1>Almost there</h1>
           <form className="signup-form">
             <div className="field">
-              <label htmlFor="name" className="label">Your name</label>
+              <label htmlFor="name" className="label">
+                Your name
+              </label>
               {nameHasError && (
                 <div className="error-message">
                   <FeatherIcons
@@ -169,15 +175,17 @@ export const SignupForm = () => {
               <input
                 value={formState.name}
                 autoComplete="off"
-                type="text" // Corrected type from "name" to "text"
+                type="name"
                 name="name"
                 id="name"
-                className={nameHasError ? "has-error" : ""}
-                onChange={onChangeHandler}
+                className={`${nameHasError ? "has-error" : ""}`}
+                onChange={(event) => onChangeHandler(event)}
               />
             </div>
             <div className="field">
-              <label className="label" htmlFor="password">Password</label>
+              <label className="label" htmlFor="password">
+                Password
+              </label>
               {passwordHasError && (
                 <div className="error-message">
                   <FeatherIcons
@@ -189,17 +197,17 @@ export const SignupForm = () => {
                     strokeWidth={2}
                     currentColor={"#fff"}
                   />
-                  Password must be at least 8 characters long
+                  Password must be at least 8 characters long{" "}
                 </div>
               )}
               <div className="toggle_password">
                 <input
-                  className={`form_field_control ${passwordHasError ? "has-error" : ""}`}
+                  className={` form_field_control ${passwordHasError ? "has-error" : ""}`}
                   value={formState.password}
                   type={showPassword ? "text" : "password"}
                   name="password"
                   id="password"
-                  onChange={onChangeHandler}
+                  onChange={(event) => onChangeHandler(event)}
                 />
                 <span className="toggle" role="checkbox" onClick={() => setShowPassword(!showPassword)}>
                   {showPassword ? <EyeOpen /> : <EyeClosed />}
@@ -207,11 +215,7 @@ export const SignupForm = () => {
               </div>
             </div>
             <div className="hint-text">Your password must be at least 8 characters long. Avoid common words or patterns.</div>
-            <button 
-              className="auth-button submit-button" 
-              disabled={loading} 
-              onClick={signUpWithEmailAddress}
-            >
+            <button className="auth-button submit-button" disabled={false} onClick={(event) => signUpWithEmailAddress(event)}>
               Sign up now
               {loading && <Spinner light />}
             </button>

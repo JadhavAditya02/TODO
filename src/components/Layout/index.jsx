@@ -9,7 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Outlet, useParams } from "react-router-dom";
 
 export const Layout = () => {
-  const { isLight } = useThemeContextValue();
+  const { isLight, setIsLight } = useThemeContextValue();
   const [showSidebar, setShowSidebar] = useState(true);
   const toggleSidebar = useCallback(() => setShowSidebar((value) => !value));
   const params = useParams();
@@ -18,7 +18,7 @@ export const Layout = () => {
     width < 900 && setShowSidebar(false);
   }, [params]);
 
-  const { loading } = useProjects();
+  const { projects, loading } = useProjects();
 
   return (
     <>

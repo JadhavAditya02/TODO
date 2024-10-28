@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 export const HomeButton = () => {
   const params = useParams();
   const { projects } = useProjects();
-  const { setSelectedProject } = useSelectedProject(params, projects);
+  const { setSelectedProject, selectedProject } = useSelectedProject(params, projects);
   return (
     <Link
       to="/app/Inbox"

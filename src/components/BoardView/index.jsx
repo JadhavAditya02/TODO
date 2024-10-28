@@ -11,7 +11,7 @@ import "./styles/main.scss";
 export const Board = () => {
   const params = useParams();
   const { projects } = useProjects();
-  const {  selectedProject } = useSelectedProject(params, projects);
+  const { setSelectedProject, selectedProject } = useSelectedProject(params, projects);
   const boardData = useBoardData(selectedProject);
   const { currentUser } = useAuth();
   const [boardState, setBoardState] = useState(boardData);
@@ -29,11 +29,11 @@ export const Board = () => {
       return;
     }
 
-    // const column = boardState.columns[source.droppableId];
-    // const newColumnTasks = [...column.columnTasks];
+    const column = boardState.columns[source.droppableId];
+    const newColumnTasks = [...column.columnTasks];
     const start = boardState.columns[source.droppableId];
     const finish = boardState.columns[destination.droppableId];
-    const taskWithDraggableId = Object.values(boardState.tasks).find((task) => task.taskId === draggableId);
+    const taskWithDraggableId = Object.values(boardState.tasks).find((task) => task.taskId == draggableId);
 
     if (start === finish) {
       const newTaskIds = Array.from(start.columnTasks);
