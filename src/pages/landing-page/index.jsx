@@ -11,6 +11,7 @@ export const LandingPage = () => {
           <div className="intro__nav--group">
             <div className="nav-logo">
               <Logo className="logo__desktop" />
+              {/* <LogoMobile className="logo__mobile" /> */}
             </div>
           </div>
           <div className="intro__nav--group">
@@ -49,7 +50,7 @@ export const LandingPage = () => {
                   <li><strong>Protected routes :</strong> Ensures secure access control.</li>
                 </ul>
               </p>
-              <Link className="btn" to="/signin">Try Notes, it's FREE!</Link>
+              {/* <Link className="btn" to="/signin">Try Notes, it's FREE!</Link> */}
             </div>
             <div className="notes-img">
               <img src={illustration} alt="Landing Illustration" className="landing-illustration" />
