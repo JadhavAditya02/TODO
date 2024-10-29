@@ -44,11 +44,11 @@ export const LandingPage = () => {
               <p className="feature">
                 <ul className="feature-list">
                   <li><strong>Secure authentication :</strong> Uses google from firebase.</li>
-                  <li><strong>Hosting :</strong> API hosted on Render for backend control.</li>
                   <li><strong>Robust error handling :</strong> Handles HTTP errors effectively.</li>
                   <li><strong>Data Management :</strong> Supports Create, Read, Update, Delete.</li>
                   <li><strong>Clean interface :</strong> Provides a user-friendly experience.</li>
                   <li><strong>Protected routes :</strong> Ensures secure access control.</li>
+                  <li><strong>Hosting :</strong> Hosted on Vercel.</li>
                 </ul>
               </p>
               {/* <Link className="btn" to="/signin">Try Notes, it's FREE!</Link> */}
