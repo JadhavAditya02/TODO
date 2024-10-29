@@ -1,4 +1,5 @@
 import illustration from "assets/svg/landing-illustration.svg";
+import { ReactComponent as LogoMobile } from "assets/svg/logo-mobile.svg";
 import { ReactComponent as Logo } from "assets/svg/logo.svg";
 import { Link } from "react-router-dom";
 import "./main.scss";
@@ -11,7 +12,7 @@ export const LandingPage = () => {
           <div className="intro__nav--group">
             <div className="nav-logo">
               <Logo className="logo__desktop" />
-              {/* <LogoMobile className="logo__mobile" /> */}
+              <LogoMobile className="logo__mobile" />
             </div>
           </div>
           <div className="intro__nav--group">
